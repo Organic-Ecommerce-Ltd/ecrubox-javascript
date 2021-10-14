@@ -1,0 +1,19 @@
+{
+    "name": "ecrubox/javascript",
+    "description": "Reinstates requirejs functionality on Hyva.",
+    "config": {
+        "sort-packages": true
+    },
+    "version": "1.0.0",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "autoload": {
+        "files": [
+            "registration.php"
+
+        ],
+	"psr-4": {
+            "Ecrubox\\Javascript\\": ""
+        }
+    }
+}
