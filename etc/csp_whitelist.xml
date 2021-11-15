@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright  Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp/etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <!--CDN-->
+                <value id="pinimg" type="host">*.pinimg.com</value>
+                <value id="pinterest" type="host">*.pinterest.com</value>
+                <!--Google-->
+               
+            </values>
+        </policy>
+           <policy id="frame-src">
+            <values>
+             
+                     <value id="pinterest-frame" type="host">*.pinterest.com</value>
+                <value id="pinterest-uk-frame" type="host">*.pinterest.co.uk</value>
+            </values>
+        </policy>
+       
+        <policy id="img-src">
+            <values>
+               
+                  <value id="pinterest-com" type="host">*.pinterest.com</value>
+
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <!--CDN-->
+               
+                <value id="pinterest-cs" type="host">*.pinterest.com</value>
+            
+            </values>
+        </policy>
+       
+    </policies>
+</csp_whitelist>

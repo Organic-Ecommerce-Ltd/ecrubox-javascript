@@ -1,4 +1,66 @@
 <script>
- 
-     require.config({"baseUrl": "<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('/') ?>"});
+
+function mediaClip() {
+
+(function($) {
+    'use strict';
+   
+  
+    $.widget('mediaclip.customize', {
+        _create: function() {
+            var self = this;
+
+            self.form = self.element;
+            self.btn = self.form.find('[type="submit"]');
+
+            self.form.on('submit', function(e){
+                self.form.valid();
+                if(self.form.validation('isValid')) {
+                    e.preventDefault();
+                    self.submit();
+                }
+            });
+        },
+        submit: function() {
+            var self = this;
+
+            self.btn.prop('disable', true);
+
+            $.ajax({
+                showLoader: true,
+                url: urlBuilder.build('product-designer/project/create'),
+                data: self.form.serialize(),
+                type: 'POST',
+                dataType: 'json'
+            }).done(function (data) {
+
+                if(data.redirectUrl) {
+                    self.redirectTo(data.redirectUrl);
+                    return false;
+                }
+                else if(data.message) {
+                    alert(data.message);
+                }
+                else {
+                    console.log(data);
+                }
+            });
+        },
+        redirectTo: function(url){
+            window.location.href = url;
+        }
+    }); 
+   
+    return $.mediaclip.customize;
+});
+}
+
+window.addEventListener('DOMContentLoaded',function() {
+    mediaClip();
+
+
+});
+
+
+
 </script>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Mediaclip Inc.
+ * @copyright Copyright (c) 2018 Mediaclip Inc. (http://www.mediaclip.ca)
+ * @package Mediaclip_Hub
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="https://api.mediacliphub.com/scripts/hub.min.js" src_type="url" />
+
+
+    </head>
+    <body>
+        <attribute name="class" value="page-product-mediaclip"/>
+
+        <referenceBlock name="head.additional">
+            <block name="ecrubox.require" class="Magento\Framework\View\Element\Template" template="Ecrubox_Javascript::requirejs.phtml" />
+        </referenceBlock>
+
+         <referenceBlock name="product.info">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Ecrubox_Javascript::product/info.phtml</argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,49 @@
+<script>
+ 
+(function(mediaclip) {
+  mediaclip.bUrl = "<?php /* @escapeNotVerified */ echo $block->getViewFileUrl('/') ?>";
+  mediaclip.webWorker = new Worker('<?= $block->getViewFileUrl('Ecrubox_Javascript/js/mediaclip.js') ?>');
+  mediaclip.btn = document.querySelector('#product-customize-button');
+
+  mediaclip.run = function() {
+    mediaclip.webWorker.postMessage({action:'load',path: mediaclip.bUrl});
+
+    mediaclip.setClickAction(mediaclip.btn);
+  };
+
+  mediaclip.setClickAction = function(b) {
+    const btn = document.querySelector('#product-customize-button');
+    btn.addEventListener('click',()=> {
+      mediaclip.webWorker.postMessage({text:'something, something dark side',path: mediaclip.bUrl});
+
+
+    });
+
+    /* handle the response from the worker thread */
+
+    mediaclip.webWorker.onmessage = function(e) {
+
+      console.log("RESPONSE:"+e.data);
+
+    }
+
+  }
+
+
+
+
+
+})(window.mediaclip = window.mediaclip || {});
+
+
+
+window.addEventListener('load',()=> {
+ 
+  mediaclip.run();
+
+ }); 
+
+
+
+
+</script>
